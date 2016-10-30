@@ -128,3 +128,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{"id":1,"status":{"power":1,"operation_mode":2,"set_temperature":15,"fan_speed":2,"fan_direction":0}}' 'https://api-01.daikin.ishikari-dc.net/equipments/1/'
+
+AIR_CONDITIONING = [
+
+]

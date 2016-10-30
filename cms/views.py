@@ -2,7 +2,11 @@
 from django.http import HttpResponse
 from django.http import JsonResponse
 from .models import Answer
+import requests
 import re
+
+cold_list = [42, 72]
+hot_list = [52]
 
 
 def index(request):
@@ -28,7 +32,20 @@ def index(request):
     else:
         select = {
             'text': select.text,
-            'id': select.id
+            'id': int(select.id)
         }
-
+    if select.id in cold_list:
+        cold(1)
+    if select.id in hot_list:
+        hit(1)
     return JsonResponse(select)
+
+
+def cold(_id):
+    data = '{"id":'+ str(_id) +',"status":{"power":1,"operation_mode":2,"set_temperature":15,"fan_speed":2,"fan_direction":0}}'
+    requests.post('https://api-01.daikin.ishikari-dc.net/equipments/'+ str(_id) +'/', data=data)
+
+
+def hot(_id):
+    data = '{"id":'+ str(_id) +',"status":{"power":1,"operation_mode":2,"set_temperature":28,"fan_speed":2,"fan_direction":0}}'
+    requests.post('https://api-01.daikin.ishikari-dc.net/equipments/'+ str(_id) +'/', data=data)
