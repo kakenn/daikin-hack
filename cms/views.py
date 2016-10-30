@@ -36,7 +36,7 @@ def index(request):
         }
     if select["id"] in cold_list:
         cold(1)
-    if select["id"} in hot_list:
+    if select["id"] in hot_list:
         hit(1)
     return JsonResponse(select)
 
