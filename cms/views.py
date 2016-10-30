@@ -42,10 +42,10 @@ def index(request):
 
 
 def cold(_id):
-    data = '{"id":'+ str(_id) +',"status":{"power":1,"operation_mode":2,"set_temperature":15,"fan_speed":2,"fan_direction":0}}'
-    requests.post('https://api-01.daikin.ishikari-dc.net/equipments/'+ str(_id) +'/', data=data)
+    data = '{"id":'+ str(_id) +',"status":{"power":1,"operation_mode":4,"set_temperature":15,"fan_speed":2,"fan_direction":0}}'
+    requests.post('https://api.daikin.ishikari-dc.net/equipments/'+ str(_id) +'/', data=data)
 
 
 def hot(_id):
     data = '{"id":'+ str(_id) +',"status":{"power":1,"operation_mode":2,"set_temperature":28,"fan_speed":2,"fan_direction":0}}'
-    requests.post('https://api-01.daikin.ishikari-dc.net/equipments/'+ str(_id) +'/', data=data)
+    requests.post('https://api.daikin.ishikari-dc.net/equipments/'+ str(_id) +'/', data=data)
