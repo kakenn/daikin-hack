@@ -6,7 +6,7 @@ from .models import Answer
 import requests
 import re
 
-cold_list = [42, 72]
+cold_list = [42, 72, 102]
 hot_list = [52]
 
 
@@ -36,16 +36,8 @@ def index(request):
             'id': int(select.id)
         }
     if select["id"] in cold_list:
-        cold(75)
-        cold(74)
-        cold(71)
-        cold(70)
         cold(72)
     if select["id"] in hot_list:
-        hot(75)
-        hot(74)
-        hot(71)
-        hot(70)
         hot(72)
     return JsonResponse(select)
 
