@@ -36,9 +36,17 @@ def index(request):
             'id': int(select.id)
         }
     if select["id"] in cold_list:
-        cold(1)
+        cold(75)
+        cold(74)
+        cold(71)
+        cold(70)
+        cold(72)
     if select["id"] in hot_list:
-        hot(1)
+        hot(75)
+        hot(74)
+        hot(71)
+        hot(70)
+        hot(72)
     return JsonResponse(select)
 
 
