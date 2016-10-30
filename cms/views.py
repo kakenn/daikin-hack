@@ -1,5 +1,6 @@
 # coding=utf-8
 from django.http import HttpResponse
+from requests.auth import HTTPBasicAuth
 from django.http import JsonResponse
 from .models import Answer
 import requests
@@ -43,9 +44,9 @@ def index(request):
 
 def cold(_id):
     data = '{"id":'+ str(_id) +',"status":{"power":1,"operation_mode":4,"set_temperature":15,"fan_speed":2,"fan_direction":0}}'
-    requests.post('https://api.daikin.ishikari-dc.net/equipments/'+ str(_id) +'/', data=data)
+    print requests.post('https://api.daikin.ishikari-dc.net/equipments/' + str(_id) + '/', data=data, auth=HTTPBasicAuth('daikin', 'pichonkun')).json()
 
 
 def hot(_id):
     data = '{"id":'+ str(_id) +',"status":{"power":1,"operation_mode":2,"set_temperature":28,"fan_speed":2,"fan_direction":0}}'
-    requests.post('https://api.daikin.ishikari-dc.net/equipments/'+ str(_id) +'/', data=data)
+    print requests.post('https://api.daikin.ishikari-dc.net/equipments/' + str(_id) + '/', data=data, auth=HTTPBasicAuth('daikin', 'pichonkun')).json()
